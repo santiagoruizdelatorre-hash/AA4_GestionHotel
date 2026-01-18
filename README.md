@@ -1,71 +1,44 @@
-Sistema de Gestión Hotelera (Aplicación de Consola Java)
-Este proyecto es una aplicación de consola en Java diseñada para gestionar las reservas de un pequeño hotel. El sistema permite interactuar con el usuario a través de un menú textual para realizar operaciones básicas de gestión hotelera, siguiendo un patrón de diseño Modelo-Vista-Controlador (MVC).
+# 🏨 Sistema de Gestión Hotelera (MVC)
 
-Descripción General
-La aplicación simula el funcionamiento de la recepción de un hotel. Al iniciar, se precargan datos de ejemplo (habitaciones) y se presenta un menú principal. El usuario puede realizar reservas, comprobar su estado, cancelarlas y generar tickets de confirmación. El sistema maneja diferentes tipos de habitaciones, fechas y cálculos de precios mediante polimorfismo.
+Este proyecto es una aplicación de consola en Java diseñada para gestionar las reservas, habitaciones y facturación de un hotel. El sistema implementa el patrón de arquitectura **Modelo-Vista-Controlador (MVC)** para separar la lógica de negocio de la interfaz de usuario.
 
-Arquitectura (Patrón MVC)
-El proyecto está estructurado claramente siguiendo el patrón MVC, como se evidencia en el código fuente:
+## 📋 Características
 
-Controlador (ControlHotel.java): Es el punto de entrada (main). Gestiona el flujo de la aplicación, contiene el bucle principal del menú y coordina la comunicación entre la vista y el modelo. Inicializa los datos de prueba (habitaciones).
+El sistema permite realizar las siguientes operaciones a través de un menú interactivo:
 
-Vista (HotelView.java): Se encarga de toda la interacción con el usuario. Muestra el menú, solicita datos por consola (usando Scanner), valida entradas básicas (como fechas y números) y muestra mensajes de resultado o tickets.
+* **Hacer Reserva:** Registro de nuevos huéspedes validando fechas y disponibilidad.
+* **Gestión de Habitaciones:** Soporte para diferentes tipos (Simple, Doble, Suite) con precios y reglas específicas.
+* **Consultar Reservas:** Verificación de disponibilidad y estado por ID y fecha.
+* **Cancelaciones:** Permite anular reservas existentes.
+* **Facturación:** Generación de tickets detallados con el desglose del coste total según las noches y el tipo de habitación.
 
-Modelo (Hotel.java y clases relacionadas): Contiene la lógica de negocio y los datos. La clase principal Hotel gestiona las listas de habitaciones y reservas, y realiza las operaciones lógicas como buscar disponibilidad, crear reservas y validarlas.
+## 🛠️ Tecnologías y Conceptos POO
 
-Funcionalidades Principales
-Basado en el menú principal mostrado en la vista y las opciones del controlador, las funcionalidades son:
+El proyecto ha sido desarrollado en **Java** puro, poniendo en práctica conceptos clave de la Programación Orientada a Objetos:
 
-Hacer reserva:
+* **Arquitectura MVC:** Separación clara entre `Modelo` (Hotel, Reserva), `Vista` (HotelView) y `Controlador` (ControlHotel).
+* **Polimorfismo e Herencia:** Uso de una clase abstracta `Habitacion` y clases hijas (`HabitacionSimple`, `HabitacionDoble`, `HabitacionSuite`) para el cálculo dinámico de precios.
+* **Interfaces:** Implementación de la interfaz `Facturable`.
+* **Manejo de Fechas:** Uso de la API `java.time.LocalDate` para cálculos precisos de estancias.
+* **Validaciones:** Control de errores en entrada de datos (DNI, fechas incoherentes, etc.).
 
-Solicita datos del cliente (Nombre, DNI, Teléfono) y fechas (Entrada, Salida).
+## 📂 Estructura del Proyecto
 
-Permite elegir entre tres tipos de habitación: "simple", "doble" o "suite".
-
-El sistema busca una habitación disponible del tipo solicitado y crea la reserva si las fechas son válidas.
-
-Comprobar reserva:
-
-Permite verificar si una reserva específica (por ID) es válida para una fecha concreta, asegurando que esté dentro del rango de estancia y no esté cancelada.
-
-Cancelar reserva:
-
-Permite cambiar el estado de una reserva a "CANCELADA" mediante su ID.
-
-Sacar ticket:
-
-Genera y muestra en consola un "Ticket" detallado para las reservas confirmadas, incluyendo datos del cliente, habitación, fechas y el precio total calculado.
-
-Estructura del Código y Características Técnicas
-El proyecto demuestra varios conceptos clave de Programación Orientada a Objetos (POO) en Java:
-
-Jerarquía de Habitaciones y Polimorfismo
-Se utiliza una clase abstracta base Habitacion que implementa la interfaz Facturable. Los distintos tipos de habitación heredan de ella y sobrescriben el método calcularPrecio para aplicar diferentes tarifas.
-
-Facturable.java (Interfaz): Define el contrato para calcular precios.
-
-Habitacion.java (Abstracta): Define los atributos comunes (número, precio base, estado).
-
-HabitacionSimple.java: Precio base estándar.
-
-HabitacionDoble.java: Añade un suplemento al precio base.
-
-HabitacionSuite.java: Añade un extra de lujo al precio base.
-
-Gestión de Datos
-Reserva.java: Vincula un Cliente, una Habitacion y un rango de fechas (LocalDate). Delega el cálculo del total a la habitación asignada.
-
-Cliente.java: Almacena la información básica del huésped.
-
-Ticket.java: Clase diseñada para generar un reporte textual formateado de una reserva.
-
-Manejo de Fechas y Colecciones
-Uso de la API moderna java.time.LocalDate para el manejo de fechas de entrada y salida.
-
-Uso de java.util.ArrayList en la clase Hotel para gestionar las colecciones de habitaciones y reservas.
-
-Auxiliares
-ResultadoOperacion.java: Una clase envoltorio utilizada para devolver un estado booleano (éxito/fallo) y un mensaje descriptivo desde los métodos del modelo hacia el controlador.
-
-Ejecución
-El punto de entrada de la aplicación es el método main dentro de la clase ControlHotel.java.
+```text
+src/
+├── controlador/
+│   └── ControlHotel.java      # Punto de entrada (main) y lógica de flujo
+├── modelo/
+│   ├── Hotel.java             # Gestor principal de listas y lógica de negocio
+│   ├── Reserva.java           # Objeto de datos de la reserva
+│   ├── Cliente.java           # Datos del huésped
+│   ├── Ticket.java            # Generador de reportes de venta
+│   ├── Habitacion.java        # Clase abstracta base
+│   ├── HabitacionSimple.java
+│   ├── HabitacionDoble.java
+│   └── HabitacionSuite.java
+├── vista/
+│   └── HotelView.java         # Interfaz de usuario por consola (Scanner)
+└── util/
+    ├── Facturable.java        # Interfaz para cálculo de precios
+    └── ResultadoOperacion.java # Wrapper para respuestas de éxito/fallo
