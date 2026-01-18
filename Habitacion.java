@@ -1,28 +1,33 @@
-public class Habitacion{
+public abstract class Habitacion implements Facturable {
     private int numero;
-    private double precioNoche;
+    private double precioBase;
     private EstadoHabitacion estado;
 
-    public Habitacion(int numero, double precioNoche) {
+    public Habitacion(int numero, double precioBase) {
         this.numero = numero;
-        this.precioNoche = precioNoche;
+        this.precioBase = precioBase;
         this.estado = EstadoHabitacion.DISPONIBLE;
-    }  
+    }
 
-    public double getPrecioNoche() {
-        return precioNoche;
+    public int getNumero() {
+        return numero;
     }
 
     public EstadoHabitacion getEstado() {
         return estado;
     }
 
-    public void ocupar() {
-        estado = EstadoHabitacion.OCUPADA;
+    public void setEstado(EstadoHabitacion estado) {
+        this.estado = estado;
     }
 
-    public void liberar() {
-        estado = EstadoHabitacion.DISPONIBLE;
+    protected double getPrecioBase() {
+        return precioBase;
     }
 
+    // Por defecto: base * noches (las hijas pueden sobreescribir)
+    @Override
+    public double calcularPrecio(int noches) {
+        return precioBase * noches;
+    }
 }
