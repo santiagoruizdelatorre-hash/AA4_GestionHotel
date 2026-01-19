@@ -1,63 +1,39 @@
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
+import java.util.Date;
+import java.util.Scanner;
 
-public class Reserva {
+public class Reserva{
     private String id;
     private Cliente cliente;
     private Habitacion habitacion;
-    private LocalDate fechaEntrada;
-    private LocalDate fechaSalida;
+    private Date fechaEntrada;
+    private Date fechaSalida;
     private EstadoReserva estado;
+    private Scanner sc;
 
-    public Reserva(String id, Cliente cliente, Habitacion habitacion, LocalDate fechaEntrada, LocalDate fechaSalida) {
-        this.id = id;
-        this.cliente = cliente;
-        this.habitacion = habitacion;
-        this.fechaEntrada = fechaEntrada;
-        this.fechaSalida = fechaSalida;
-        // Por defecto la dejamos pendiente, aunque en el Hotel la confirmas inmediatamente
-        this.estado = EstadoReserva.PENDIENTE; 
+    public Reserva(){
+        this.sc = new Scanner(System.in);
+        this.cliente = new Cliente();
     }
 
-    public String getId() {
+    public String getId(){
         return id;
     }
+    public int getNoches(){
+        long diferencia = fechaSalida.getTime() - fechaEntrada.getTime();
+        return (int) (diferencia/ (100 *60 *60 * 34));
 
-    public Cliente getCliente() {
-        return cliente;
     }
+    public double  calcularTotal(){
 
-    public Habitacion getHabitacion() {
-        return habitacion;
+        }
     }
+    public void confirmar(){
+        estado = EstadoReserva.CONFIRMADA;
 
-    public LocalDate getFechaEntrada() {
-        return fechaEntrada;
     }
-
-    public LocalDate getFechaSalida() {
-        return fechaSalida;
-    }
-
-    public EstadoReserva getEstado() {
-        return estado;
-    }
-
-    public int getNoches() {
-        // Calcula la diferencia de días de forma segura usando una API moderna de Java
-        long dias = ChronoUnit.DAYS.between(fechaEntrada, fechaSalida);
-        return (int) dias;
-    }
-
-    public double calcularTotal() {
-        return habitacion.calcularPrecio(getNoches());
-    }
-
-    public void confirmar() {
-        this.estado = EstadoReserva.CONFIRMADA;
-    }
-
-    public void cancelar() {
-        this.estado = EstadoReserva.CANCELADA;
+    public void cancelar(){
+        estado = EstadoReserva.CANCELADA;
     }
 }
+
+

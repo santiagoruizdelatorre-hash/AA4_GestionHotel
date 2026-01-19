@@ -1,4 +1,5 @@
 public class Cliente {
+    
     private String dni;
     private String nombre;
     private String telefono;
@@ -15,9 +16,5 @@ public class Cliente {
 
     public String getNombre() {
         return nombre;
-    }
-
-    public String getTelefono() {
-        return telefono;
     }
 }

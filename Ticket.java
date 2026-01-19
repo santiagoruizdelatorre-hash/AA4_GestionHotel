@@ -24,7 +24,7 @@ public class Ticket {
             + "Entrada: " + reserva.getFechaEntrada() + "\n"
             + "Salida: " + reserva.getFechaSalida() + "\n"
             + "Noches: " + reserva.getNoches() + "\n"
-            + "Total: " + String.format("%.2f", total) + " €\n"
+            + "Total: " + String.format("%.2f", total) + " Eur\n"
             + "Fecha emisión: " + fechaEmision + "\n"
             + "====================\n";
     }

@@ -23,15 +23,25 @@ public class ControlHotel {
             int op = view.mostrarMenu();
 
             switch (op) {
-                case 1 -> opcionHacerReserva();
-                case 2 -> opcionComprobarReserva();
-                case 3 -> opcionCancelarReserva();
-                case 4 -> opcionSacarTicket();
-                case 5 -> {
+                case 1: 
+                opcionHacerReserva();
+                break;
+                case 2: 
+                opcionComprobarReserva();
+                break;
+                case 3: 
+                opcionCancelarReserva();
+                break;
+                case 4:
+                opcionSacarTicket();
+                break;
+                case 5: {
                     view.mostrarMensaje("¡Hasta luego!");
                     salir = true;
+                    break;
                 }
-                default -> view.mostrarMensaje("Opción inválida.");
+                default: view.mostrarMensaje("Opción inválida.");
+                break;
             }
         }
     }
