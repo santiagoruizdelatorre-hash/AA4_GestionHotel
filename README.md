@@ -26,7 +26,6 @@ El proyecto ha sido desarrollado en **Java** puro, poniendo en práctica concept
 
 ## Estructura del Proyecto
 
-src/
 ├── controlador/
 │   └── ControlHotel.java      # Punto de entrada (main) y lógica de flujo
 ├── modelo/
