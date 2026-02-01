@@ -7,12 +7,17 @@ public class Reserva{
     private Habitacion habitacion;
     private Date fechaEntrada;
     private Date fechaSalida;
-    private EstadoReserva estado;
+    private EstadoReserva estadoR;
     private Scanner sc;
 
-    public Reserva(){
+    public Reserva(String id, Cliente cliente, Habitacion habitacion, Date entrada, Date salida){
         this.sc = new Scanner(System.in);
-        this.cliente = new Cliente();
+        this.cliente = cliente;
+        this.habitacion = habitacion;
+        this.fechaEntrada = entrada;
+        this.fechaSalida = salida;
+        this.estadoR = EstadoReserva.PENDIENTE;
+
     }
 
     public String getId(){
@@ -24,16 +29,20 @@ public class Reserva{
 
     }
     public double  calcularTotal(){
-
+        if(habitacion != null){
+            return habitacion.calcularPrecio(getNoches());
         }
+        return 0.0;
     }
     public void confirmar(){
-        estado = EstadoReserva.CONFIRMADA;
+        this.estadoR = EstadoReserva.CONFIRMADA;
 
     }
     public void cancelar(){
-        estado = EstadoReserva.CANCELADA;
+        this.estadoR = EstadoReserva.CANCELADA;
     }
 }
+
+
 
 
