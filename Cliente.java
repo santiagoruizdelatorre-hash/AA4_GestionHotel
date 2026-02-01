@@ -2,9 +2,9 @@ public class Cliente {
     
     private String dni;
     private String nombre;
-    private String telefono;
+    private double telefono;
 
-    public Cliente(String dni, String nombre, String telefono) {
+    public Cliente(String dni, String nombre, double telefono) {
         this.dni = dni;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -16,5 +16,8 @@ public class Cliente {
 
     public String getNombre() {
         return nombre;
+    }
+    public double getTelefono(){
+        return telefono;
     }
 }
