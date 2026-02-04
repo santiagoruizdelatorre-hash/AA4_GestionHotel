@@ -1,0 +1,9 @@
+*.java
+*.class
+*.ctxt
+.project
+.classpath
+.settings/
+*.jar
+*.log
+.DS_Store
