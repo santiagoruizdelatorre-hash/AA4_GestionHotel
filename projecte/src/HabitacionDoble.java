@@ -1,5 +1,4 @@
 public class HabitacionDoble extends Habitacion {
-    
     private double suplemento;
 
     public HabitacionDoble(int numero, double precioBase, double suplemento) {
@@ -12,3 +11,4 @@ public class HabitacionDoble extends Habitacion {
         return (getPrecioBase() + suplemento) * noches;
     }
 }
+
