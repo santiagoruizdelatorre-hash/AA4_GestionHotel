@@ -37,11 +37,10 @@ El proyecto ha sido desarrollado en **Java** puro, poniendo en práctica concept
 │   ├── HabitacionSimple.java
 │   ├── HabitacionDoble.java
 │   └── HabitacionSuite.java
+│   └── Facturable.java        # Interfaz para cálculo de precios
+│   └── ResultadoOperacion.java # Wrapper para respuestas de éxito/fallo
 ├── vista/
 │   └── HotelView.java         # Interfaz de usuario por consola (Scanner)
-└── util/
-    ├── Facturable.java        # Interfaz para cálculo de precios
-    └── ResultadoOperacion.java # Wrapper para respuestas de éxito/fallo
 ## 4. Funcionalidades principales
 - Gestión de habitaciones
 - Gestión de clientes
