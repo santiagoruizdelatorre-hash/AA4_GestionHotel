@@ -1,3 +1,6 @@
+package modelo;
+
+
 public class HabitacionSimple extends Habitacion {
     public HabitacionSimple(int numero, double precioBase) {
         super(numero, precioBase);

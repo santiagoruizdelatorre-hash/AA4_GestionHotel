@@ -1,3 +1,6 @@
+package modelo;
+
+
 public abstract class Habitacion implements Facturable {
     
     private int numero;

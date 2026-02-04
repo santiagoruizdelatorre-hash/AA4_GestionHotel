@@ -1,3 +1,8 @@
+package controlador;
+
+import modelo.*;
+import vista.*;
+
 import java.util.Date;
 
 public class ControlHotel {

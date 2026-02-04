@@ -1,3 +1,6 @@
+package modelo;
+
+
 public class HabitacionDoble extends Habitacion {
     private double suplemento;
 

@@ -1,3 +1,6 @@
+package modelo;
+
+
 public class ResultadoOperacion {
     private boolean ok;
     private String mensaje;

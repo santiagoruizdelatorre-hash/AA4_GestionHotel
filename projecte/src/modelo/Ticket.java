@@ -1,3 +1,6 @@
+package modelo;
+
+
 public class Ticket {
 
     private String idTicket;
